@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "scenario-generator"
+version = "0.1.0"
+description = "A simple chatbot application using Streamlit and Azure OpenAI."
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "scenario_generator", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+streamlit = "^1.24.0"
+openai = "^0.27.8"
+azure-core = "^1.24.0"
+python-dotenv = "^1.1.1"
+
+[tool.poetry.scripts]
+scenario-generator = "main:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.13"
