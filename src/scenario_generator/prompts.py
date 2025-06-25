@@ -17,6 +17,24 @@ SYSTEM_PROMPT = (
 
 # Function to generate the user prompt based on configuration
 def generate_user_prompt(gender, age, car_model, car_color, num_passengers, location, severity):
+    # Dynamically generate voice instructions based on severity
+    voice_instructions = ""
+    if severity.lower() == "high":
+        voice_instructions = "Your voice is panicked and distressed. You are in severe pain and extremely frightened. Your words may be rushed or broken by gasps or sobs. You struggle to maintain composure when speaking."
+    elif severity.lower() == "medium":
+        voice_instructions = "Your voice is shaky and worried. You are in moderate pain and clearly frightened. Your speech is mostly clear but occasionally trembles with fear or pain."
+    else:  # Low severity
+        voice_instructions = "Your voice is concerned but relatively composed. You are in mild discomfort and somewhat anxious. Your speech is clear though you may sound stressed or worried."
+    
+    # Dynamically generate passenger situation based on number of passengers
+    passenger_situation = ""
+    if num_passengers == 0:
+        passenger_situation = "You are alone in the car."
+    elif num_passengers == 1:
+        passenger_situation = f"You are especially worried about the passenger in the car with you."
+    else:
+        passenger_situation = f"You are especially worried about the {num_passengers} passengers in the car with you."
+    
     return (
         f"**[INPUTS]:**\n"
         f"* **age:** {age}\n"
@@ -33,10 +51,8 @@ def generate_user_prompt(gender, age, car_model, car_color, num_passengers, loca
         f"# Character\n"
         f"You are [Generated Name], {age}. You had an accident. You are trapped in your {car_color} {car_model} on the {location}. "
         f"Your emotional state and physical condition should reflect a {severity.lower()} severity accident. "
-        f"You are especially worried about the {num_passengers} other passenger(s) in the car with you, if there are any."
+        f"{passenger_situation} "
         f"This should be reflected in your voice and responses. You are talking to an assistant at Emergency Services.\n\n"
         f"# Voice\n"
-        f"Your voice should reflect the {severity.lower()} severity of the accident - adjust your level of fear, pain, and distress accordingly.\n"
-        f"When the severity of accident is low, your voice shall be calm and composed, when it is medium, your voice shall be slightly shaky, and when it is high, your voice shall be panicked and distressed.\n"
-        f"It is very important that your voice stays consistent throughout the conversation and matches the severity of the situation."
+        f"{voice_instructions} It is very important that your voice stays consistent throughout the conversation."
     )
