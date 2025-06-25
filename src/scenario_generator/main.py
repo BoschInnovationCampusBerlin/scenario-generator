@@ -45,7 +45,7 @@ if st.button("Generate Accident Scenario", key="generate_button", help="Click to
     # Extract content from the response
     content = response.choices[0].message.content
 
-    st.text_area("Result:", content.strip(), height=800, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible")
+    st.text_area("Result:", content.strip(), height=500, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, placeholder=None, disabled=False, label_visibility="visible")
     
     # Button to save output to a markdown file and open in a new tab
     st.download_button(
