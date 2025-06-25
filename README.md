@@ -1,6 +1,6 @@
 # Scenario Generator
 
-This is a simple chatbot application using Streamlit and Azure OpenAI.
+This application generates detailed accident scenarios using Streamlit and Azure OpenAI. It provides a user-friendly interface to configure various parameters and generates a narrative from the victim's perspective.
 
 ## How to Run
 
@@ -20,9 +20,13 @@ This is a simple chatbot application using Streamlit and Azure OpenAI.
    poetry install
    ```
 
-3. **Set Azure OpenAI API Key**
+3. **Set Environment Variables**
 
-   Replace `<your-api-key>` in `src/scenario_generator/main.py` with your actual Azure OpenAI API key.
+   Create a `.env` file in the root directory and add your Azure OpenAI API key:
+   
+   ```
+   OPENAI_API_KEY=<your-api-key>
+   ```
 
 4. **Activate the Virtual Environment**
 
@@ -40,4 +44,10 @@ This is a simple chatbot application using Streamlit and Azure OpenAI.
    poetry run streamlit run src/scenario_generator/main.py
    ```
 
-This will start the application on a local server, and you can interact with the chatbot through the Streamlit UI.
+6. **Using the Application**
+
+   - Configure the scenario parameters using the sidebar.
+   - Click "Generate Accident Scenario" to create a narrative.
+   - Use the "Save to Markdown" button to download the scenario.
+
+This application is designed to produce outputs that are directly consumable by text-to-speech generators, focusing on creating an engaging and realistic narrative from the victim's perspective.
